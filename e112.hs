@@ -27,5 +27,4 @@ bouncy = filter isBouncy [1..]
 bouncy_ratio :: [Float]
 bouncy_ratio = map (\(x,y) -> (fromInteger x) /(fromInteger y) ) (zip [1..] bouncy)
 
-
-e112 = last (takeWhile (\(x,y) -> x <= 0.99) (zip bouncy_ratio bouncy))
+e112 = head (filter (\(x,y) -> x == 0.99) (zip bouncy_ratio bouncy))
