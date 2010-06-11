@@ -19,7 +19,7 @@ multiDivisible x y = (0 /= length (divideSeveral x y))
 
 -- Returns True if y < sqrt(x)
 lessThanSqrtOf :: Integer -> Integer -> Bool
-lessThanSqrtOf x y = y < (x `div` 2)
+lessThanSqrtOf x y = y <= (x `div` 2)
 --lessThanSqrtOf x y = (y :: Float) < sqrt(x)
 
 reducedPrimeSet :: Integer -> [Integer] -> [Integer]
@@ -47,7 +47,7 @@ isPrime p x = if (multiDivisible x (reducedPrimeSet x p))
               else True
 
 primes :: [Integer]
-primes = 2 : 3 : 5 : 7 : [x | x <- [8..], isPrime primes x ]
+primes = 2 : [x | x <- [3..], isPrime primes x ]
 
 -- TODO: Exchange Int for Integer (is bignum)
 main = do
