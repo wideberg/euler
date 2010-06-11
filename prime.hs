@@ -23,7 +23,8 @@ lessThanSqrtOf x y = y < (x `div` 2)
 --lessThanSqrtOf x y = (y :: Float) < sqrt(x)
 
 reducedPrimeSet :: Integer -> [Integer] -> [Integer]
-reducedPrimeSet x p = [2,3,5,7]
+reducedPrimeSet x ps = takeWhile (lessThanSqrtOf x) ps
+--reducedPrimeSet x p = [2,3,5,7]
 --reducedPrimeSet x p = head ((length p) - 1) p
 --     where
 --       d = [y | y <- (takeWhile (<x) p)]
