@@ -24,22 +24,6 @@ lessThanSqrtOf x y = y <= (x `div` 2)
 
 reducedPrimeSet :: Integer -> [Integer] -> [Integer]
 reducedPrimeSet x ps = takeWhile (lessThanSqrtOf x) ps
---reducedPrimeSet x p = [2,3,5,7]
---reducedPrimeSet x p = head ((length p) - 1) p
---     where
---       d = [y | y <- (takeWhile (<x) p)]
-
---multiDivisible x y = 
--- divisible :: Int -> [Int] -> Bool
--- divisible x y | length(d) < length(y) = True
--- 		| otherwise = False
---     where d = filter (not.(==0)) r
--- 	  r = map (mod x) y
-
--- isPrime :: Float -> Bool
--- isPrime x = not (divisible x [y | y <- (takeWhile (<=t) primes)])
--- 	    where t = x - 5
---t = fromIntegral (floor (sqrt x))
 
 isPrime :: [Integer] -> Integer -> Bool
 isPrime p x = if (multiDivisible x (reducedPrimeSet x p))
@@ -47,15 +31,5 @@ isPrime p x = if (multiDivisible x (reducedPrimeSet x p))
               else True
 
 primes :: [Integer]
-primes = 2 : [x | x <- [3..], isPrime primes x ]
+primes = 2 : [x | x <- [3,5..], isPrime primes x ]
 
--- TODO: Exchange Int for Integer (is bignum)
-main = do
-  args <- getArgs
-  print (take 10 primes)
-  print (divisible 8 4)
-  print (divideSeveral 52 [2,3,4,5,6,7,8,9,10,11,12,13])
-  print (multiDivisible 13 [2,3,4,5,6,7,8,9,10,11,12])
---  print (reducedSet [2,3,5,7,11,13] 6)
-  print (lessThanSqrtOf 25 6)
-  print (lessThanSqrtOf 25 4)
