@@ -3,25 +3,26 @@ module Main where
 import System
 
 -- Returns True if y divides x
-divisible :: Int -> Int -> Bool
+divisible :: Integer -> Integer -> Bool
 divisible x y = if ( (mod x y) == 0 )
                 then True
                 else False
 
 -- Return the values in y that divide x
-divideSeveral :: Int -> [Int] -> [Int]
+divideSeveral :: Integer -> [Integer] -> [Integer]
 divideSeveral x y = filter (divisible x) y
 
 
 -- Returns True if x is divisible by any number in y
-multiDivisible :: Int -> [Int] -> Bool
+multiDivisible :: Integer -> [Integer] -> Bool
 multiDivisible x y = (0 /= length (divideSeveral x y))
 
 -- Returns True if y < sqrt(x)
-lessThanSqrtOf :: Int -> Int -> Bool
-lessThanSqrtOf x y = (y :: Float) < sqrt(x)
+lessThanSqrtOf :: Integer -> Integer -> Bool
+lessThanSqrtOf x y = y < (x `div` 2)
+--lessThanSqrtOf x y = (y :: Float) < sqrt(x)
 
-reducedPrimeSet :: Int -> [Int] -> [Int]
+reducedPrimeSet :: Integer -> [Integer] -> [Integer]
 reducedPrimeSet x p = [2,3,5,7]
 --reducedPrimeSet x p = head ((length p) - 1) p
 --     where
@@ -39,12 +40,12 @@ reducedPrimeSet x p = [2,3,5,7]
 -- 	    where t = x - 5
 --t = fromIntegral (floor (sqrt x))
 
-isPrime :: [Int] -> Int -> Bool
+isPrime :: [Integer] -> Integer -> Bool
 isPrime p x = if (multiDivisible x (reducedPrimeSet x p))
               then False
               else True
 
-primes :: [Int]
+primes :: [Integer]
 primes = 2 : 3 : 5 : 7 : [x | x <- [8..], isPrime primes x ]
 
 -- TODO: Exchange Int for Integer (is bignum)
