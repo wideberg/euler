@@ -19,8 +19,7 @@ multiDivisible x y = (0 /= length (divideSeveral x y))
 
 -- Returns True if y < sqrt(x)
 lessThanSqrtOf :: Integer -> Integer -> Bool
-lessThanSqrtOf x y = y <= (x `div` 2)
---lessThanSqrtOf x y = (y :: Float) < sqrt(x)
+lessThanSqrtOf x y = y <= (floor (sqrt (fromIntegral x)))
 
 reducedPrimeSet :: Integer -> [Integer] -> [Integer]
 reducedPrimeSet x ps = takeWhile (lessThanSqrtOf x) ps
