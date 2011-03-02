@@ -22,4 +22,4 @@ primes = 2 : [x | x <- [3,5..], isPrime x ] where
 
                 -- Returns True if y < sqrt(x)
                 lessThanSqrtOf :: Integer -> Bool
-                lessThanSqrtOf y = y <= (floor (sqrt (fromIntegral x)))
+                lessThanSqrtOf y = y <= (floor (sqrt (fromIntegral x :: Float)))
